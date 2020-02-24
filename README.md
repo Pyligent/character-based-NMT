@@ -1,8 +1,5 @@
 # Character-based Network NMT
 
-## 1. Convolutional Network Based Encoder
-
-
 ## Introduction
 Traditional methods in language modeling involve making an n-th order Markov assumption and estimating n-gram probabilities via counting. The count-based models are simple to train, but due to data sparsity, the probabilities of rare n-grams can be poorly estimated. Neural Language Models (NLM) address the issue of n-gram data sparsity by utilizing word embeddings [3]. These word embeddings derived from NLMs exhibit the property whereby semantically close words are close in the induced vector space. Even though NLMs outperform count-based n-gram language models [4], they are oblivious to subword information (e.g. morphemes). Embeddings of rare words can thus be poorly estimated, leading to high perplexities (Perplexity is the measure of how well a probability distribution predicts a sample) which is especially problematic in morphologically rich languages.
 
@@ -25,6 +22,20 @@ where <img src="https://render.githubusercontent.com/render/math?math={\displays
 
 Essentially the character level CNN applies convolutions on the character embeddings with multiple filters and max pools from these to get a fixed dimensional representation. This is then fed to the highway layer which helps in encoding semantic features which are not dependent on edit distance alone. The output of the highway layer is then fed into an LSTM that predicts the next word.
 
-## Encoder Model
 
-<img>(./img/encoder.png)
+
+## Convolutional Network based Encoder Model
+
+![img2](/img/encoder.png)
+1. Convert word to character indices.
+2. Padding and embedding lookup
+3. Convolutional network. To combine these character embeddings, we'll use 1-dimensional convolutions. The convolutional layer has two hyperparameters:4 the kernel size k (also called window size), which dictates the size of the window used to compute features, and the number of filters f(also called number of output features or number of output channels).
+4. Highway layer and dropout
+
+
+## Character-based LSTM decoder for NMT
+The LSTM-based character-level decoder to the NMT system, based on Luong & Manning's paper. The main idea is that when our word-level decoder produces an <UNK> token, run the character-level decoder (which you can think of as a character-level conditional language model) to instead generate the target word one character at a time, as shown in Figure. This will help us to produce rare and out-of-vocabulary target words.
+![img2](/img/decoder.png)
+  
+  
+  
