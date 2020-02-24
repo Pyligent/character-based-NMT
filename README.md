@@ -27,4 +27,4 @@ Essentially the character level CNN applies convolutions on the character embedd
 
 ## Encoder Model
 
-
+<img>(./img/encoder.png)
