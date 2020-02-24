@@ -1,4 +1,6 @@
-### Character-based Convolutional Network encoder NMT
+# Character-based Network NMT
+
+## 1. Convolutional Network Based Encoder
 
 
 ## Introduction
@@ -18,7 +20,11 @@ where <img src="https://render.githubusercontent.com/render/math?math={\displays
 ## Highway network
 
 <img src="https://render.githubusercontent.com/render/math?math={\displaystyle z=t\odot g(W_{H}y+b_{H})+(1-t)\odot y}">
-where <img src="https://render.githubusercontent.com/render/math?math={\displaystyle g}"> is a nonlinearity, <img src="https://render.githubusercontent.com/render/math?math={\displaystyle t=\sigma (W_{T}y+b_{T})}"> is called the transform gate, and <img src="https://render.githubusercontent.com/render/math?math={\displaystyle (1-t)}"> is called the carry gate. Similar to the memory cells in LSTM networks, highway layers allow for training of deep networks by carrying some dimensions of the input directly to the output.
+where <img src="https://render.githubusercontent.com/render/math?math={\displaystyle g}"> is a nonlinearity, <img src="https://render.githubusercontent.com/render/math?math={\displaystyle t=\sigma (W_{T}y+b_{T})}">  is called the transform gate, and <img src="https://render.githubusercontent.com/render/math?math={\displaystyle (1-t)}"> is called the carry gate. Similar to the memory cells in LSTM networks, highway layers allow for training of deep networks by carrying some dimensions of the input directly to the output.
 
 
 Essentially the character level CNN applies convolutions on the character embeddings with multiple filters and max pools from these to get a fixed dimensional representation. This is then fed to the highway layer which helps in encoding semantic features which are not dependent on edit distance alone. The output of the highway layer is then fed into an LSTM that predicts the next word.
+
+## Encoder Model
+
+
