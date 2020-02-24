@@ -1,4 +1,4 @@
-# Character-based Network NMT
+# Character-based Neural Network Translation
 
 ## Introduction
 Traditional methods in language modeling involve making an n-th order Markov assumption and estimating n-gram probabilities via counting. The count-based models are simple to train, but due to data sparsity, the probabilities of rare n-grams can be poorly estimated. Neural Language Models (NLM) address the issue of n-gram data sparsity by utilizing word embeddings [3]. These word embeddings derived from NLMs exhibit the property whereby semantically close words are close in the induced vector space. Even though NLMs outperform count-based n-gram language models [4], they are oblivious to subword information (e.g. morphemes). Embeddings of rare words can thus be poorly estimated, leading to high perplexities (Perplexity is the measure of how well a probability distribution predicts a sample) which is especially problematic in morphologically rich languages.
